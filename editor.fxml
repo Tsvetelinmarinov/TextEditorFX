@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="appdata.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar fx:id="menuBar" layoutY="1.0" prefHeight="38.0" prefWidth="312.0">
+        <menus>
+          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="newFile" mnemonicParsing="false" text="new file" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="open" mnemonicParsing="false" text="open" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="save" mnemonicParsing="false" text="save" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="newWindow" mnemonicParsing="false" text="new window" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="restart" mnemonicParsing="false" text="restart" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="close" mnemonicParsing="false" text="close" />
+            </items>
+          </Menu>
+          <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem fx:id="selectAll" mnemonicParsing="false" text="select all" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="copy" mnemonicParsing="false" text="copy" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="paste" mnemonicParsing="false" text="paste" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="deleteAll" mnemonicParsing="false" text="delete all" />
+            </items>
+          </Menu>
+            <Menu fx:id="optionsMenu" mnemonicParsing="false" text="Options">
+              <items>
+                <MenuItem fx:id="prefferences" onAction="#showOptions" mnemonicParsing="false" text="prefferences" />
+              </items>
+            </Menu>
+          <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+            <items>
+                  <MenuItem fx:id="about" onAction="#showInfo" mnemonicParsing="false" text="about" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="tips" onAction="#showInstruction" mnemonicParsing="false" text="tips" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="textBox" layoutY="68.0" prefHeight="510.0" prefWidth="980.0">
+         <font>
+            <Font name="Fira Code Regular" size="23.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.32297757267951965" green="0.06700779497623444" blue="0.5789473652839661" />
+               </color>
+            </DropShadow>
+         </effect>
+      </TextArea>
+   </children>
+</AnchorPane>
