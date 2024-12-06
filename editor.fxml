@@ -21,7 +21,7 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="open" onAction="#loadFile" mnemonicParsing="false" text="open" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="save" mnemonicParsing="false" text="save" />
+                  <MenuItem fx:id="save" onAction="#exportDataToLocalFile" mnemonicParsing="false" text="save" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="newWindow" mnemonicParsing="false" text="new window" />
                   <SeparatorMenuItem mnemonicParsing="false" />
