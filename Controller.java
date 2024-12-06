@@ -1,138 +1,5 @@
 
-/**
-* TextEditor++
-*  Controller
-*/
-
-package appdata;
-
-
-
-
-
-import javafx.scene.control.*;
-import javafx.scene.Scene;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
-import javafx.fxml.*;
-import javafx.event.ActionEvent;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.*;
-import java.util.Scanner;
-
-
-
-
-
-
-
-
-/**
-*
-*/
-public class Controller{
-
-	
-	/**
-	 * The text box
-	 */
-	@FXML
-	private TextArea textBox;
-	
-
-	
-	
-	
-	
-	/**
-	 * Show settings window
-	 */
-	public void showOptions(ActionEvent actn_evnt) {
-		//The stage to show
-		Stage arg0 = new Stage();
-		
-		//Parent component with the settings window
-		try {
-			Parent settings = FXMLLoader.load(Controller.class.getResource("settings.fxml"));
-			
-			//New scene with the parent component
-			Scene arg1 = new Scene(settings);
-			
-			//set the window
-			arg0.setTitle("Settings");
-			arg0.setScene(arg1);
-			arg0.setResizable(false);
-			arg0.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showInternalMessageDialog(null,"Unable to load settings window!","Error",JOptionPane
-					                     .ERROR_MESSAGE);
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
-	
-	
-	/**
-	 * Show information window
-	 */
-	public void showInfo(ActionEvent actn_evnt) {
-		//Main stage
-		Stage arg4 = new Stage();
-		
-		//Scene with the parent component(information window)
-		try {
-			Scene arg5 = new Scene(FXMLLoader.load(Controller.class.getResource("info.fxml")));
-			
-			//set the window
-			arg4.setTitle("About");
-			arg4.setScene(arg5);
-			arg4.setResizable(false);
-			arg4.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-
-	
-	
-	
-	/**
-	 * Show manual settings window
-	 */
-	public void showManualConfigurations(ActionEvent actn_evnt) {
-		//The new stage with the settings window
-		Stage stage = new Stage();
-		
-		try {
-			stage.setTitle("Configuration");
-			stage.setResizable(false);
-			stage.setScene(new Scene(FXMLLoader.load(Controller.class.getResource("manual_settings.fxml"))));
-			stage.show();
-		}catch (IOException e1) {
-			JOptionPane.showInternalMessageDialog(null,"Unable to load manual settings window!",
-					    "Error",JOptionPane.ERROR_MESSAGE);
-			
-			System.out.println("Error while loading the fxml document..\n");
-			e1.printStackTrace();
-		}
-	}
-	
-	
-	
-	
-	/**
-	 * Get link button
-	 */
-     public void showConnectionLink(ActionEvent actn_evnt) {			
-		//Stage with the window with the link
-    	 Stage stg = new Stage();
+();
     	 
     	 //set the stage
     	 try {
@@ -215,6 +82,9 @@ public class Controller{
     				 //Apply the content from the file to the text box
     				 textBox.appendText(content);
     			 }
+    			 
+    			 //close the scanner to avoid direct contact with the system
+    			 scan.close();
     		 }else {
     			 JOptionPane.showInternalMessageDialog(null,"Unsupported file!","Error",
     					 JOptionPane.ERROR_MESSAGE);
@@ -224,22 +94,56 @@ public class Controller{
     				     JOptionPane.WARNING_MESSAGE);
     	 }
      }
+     
+     
+     
+     
+     /**
+      * Save your file
+      */
+     public void exportDataToLocalFile(ActionEvent actn_evnt) throws FileNotFoundException {
+    	 //The new file
+    	 File document;
+    	 
+    	 //FileChooser to choose where to select your file
+    	 JFileChooser fl_chooser = new JFileChooser();
+    	 
+    	 //PrintWriter to write the text from your text box to the new file
+    	 PrintWriter printer = null;
+    	 
+    	 //Hold the response from the file chooser
+    	 int resp;
+    	 
+    	 //show file chooser and select where to save
+    	 resp = fl_chooser.showSaveDialog(null);
+    	 
+    	 //Check if the 'save' button is clicked
+    	 @SuppressWarnings("static-access")
+    	 boolean fileHasBeenSelectedToExport = (resp == fl_chooser.APPROVE_OPTION)
+    			  ? true : false;
+    	 
+    	 //if directory is pointed and the 'save' button is clicked get the
+    	 //text from the text box and write it in the new file
+    	 if(fileHasBeenSelectedToExport) {
+    		 //Create the file
+    		 document = new File(fl_chooser.getSelectedFile().getAbsolutePath());
+    		 
+    		 //Create the printer
+    		 printer = new PrintWriter(document);
+    		 
+    		 if(document.isFile()) {
+    			 printer.println((String)textBox.getText());
+    		 }else {
+    			 JOptionPane.showInternalMessageDialog(null, "Unsupported file!","Error",
+    					    JOptionPane.ERROR_MESSAGE);
+    		 }
+    		 
+    		 //close the printer to avoid contact with the system
+    		 printer.close();
+    	 }else {
+    		 JOptionPane.showInternalMessageDialog(null,"No directory select for export!","Warning",
+    				       JOptionPane.WARNING_MESSAGE);
+    	 }
+    	 
+     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
