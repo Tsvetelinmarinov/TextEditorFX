@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Menu?>
@@ -16,9 +17,9 @@
         <menus>
           <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="newFile" mnemonicParsing="false" text="new file" />
+                  <MenuItem fx:id="newFile" onAction="#createNewFile" mnemonicParsing="false" text="new file" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="open" mnemonicParsing="false" text="open" />
+                  <MenuItem fx:id="open" onAction="#loadFile" mnemonicParsing="false" text="open" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="save" mnemonicParsing="false" text="save" />
                   <SeparatorMenuItem mnemonicParsing="false" />
@@ -48,8 +49,6 @@
           <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
             <items>
                   <MenuItem fx:id="about" onAction="#showInfo" mnemonicParsing="false" text="about" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="tips" onAction="#showInstruction" mnemonicParsing="false" text="tips" />
             </items>
           </Menu>
         </menus>
