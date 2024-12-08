@@ -32,7 +32,7 @@
           </Menu>
           <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem fx:id="selectAll" mnemonicParsing="false" text="select all" />
+                  <MenuItem fx:id="selectAll" onAction="#select_all" mnemonicParsing="false" text="select all" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="copy" mnemonicParsing="false" text="copy" />
                   <SeparatorMenuItem mnemonicParsing="false" />
