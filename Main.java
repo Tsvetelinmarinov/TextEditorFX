@@ -42,6 +42,12 @@ public class Main extends Application{
 	@FXML
 	private TextArea textBox;
 	
+	
+	/**
+	 * Hold the copied text from the text box
+	 */
+	private String copied_text;
+	
 
 	
 	
@@ -288,4 +294,54 @@ public class Main extends Application{
 	
 	
 	
+	/**
+	 * Select all
+	 */
+	public void select_all(ActionEvent actn_evnt) {
+		
+		//Check if the text box has text
+		boolean empty_box = textBox.getText().isEmpty() ? true : false;
+		
+		if(empty_box)
+			//show warning
+			JOptionPane.showInternalMessageDialog(null, "Empty text filed!",
+					              "Warning",JOptionPane.WARNING_MESSAGE);
+		
+		if(!empty_box)
+			//select all the text in the text box
+			textBox.selectAll();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Getter for the copied text
+	 */
+	public String get_cpy_txt() { return copied_text; }
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
