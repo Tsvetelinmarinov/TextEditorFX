@@ -34,7 +34,7 @@
             <items>
                   <MenuItem fx:id="selectAll" onAction="#select_all" mnemonicParsing="false" text="select all" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="copy" mnemonicParsing="false" text="copy" />
+                  <MenuItem fx:id="copy" onAction="#cpy" mnemonicParsing="false" text="copy" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="paste" mnemonicParsing="false" text="paste" />
                   <SeparatorMenuItem mnemonicParsing="false" />
