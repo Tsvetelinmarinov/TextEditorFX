@@ -1,6 +1,6 @@
 
 /**
-* TextEditor++
+ TextEditor++
 */
 
 package appdata;
@@ -311,6 +311,29 @@ public class Main extends Application{
 			//select all the text in the text box
 			textBox.selectAll();
 		
+	}
+	
+	
+	
+	
+	/**
+	 * Copy some text
+	 */
+	public void cpy(ActionEvent actn_evnt) {
+		
+		//check if the text box has text
+		boolean has_not_content = textBox.getText().isEmpty() ? true : false;
+		
+		
+		//if has text copy it
+		if(!has_not_content)
+			copied_text = textBox.getSelectedText();
+		
+		//if has not text show warning
+		if(has_not_content)
+			JOptionPane.showInternalMessageDialog(null, "Empty field!",
+					   "Warning",JOptionPane.WARNING_MESSAGE);
+			
 	}
 	
 	
