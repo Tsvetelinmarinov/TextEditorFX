@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="manifactureText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="appdata.Main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <effect>
       <InnerShadow />
    </effect>
@@ -50,7 +51,7 @@
             <Font name="Fira Code Regular" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="connectButton" layoutX="135.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="get links">
+      <Button fx:id="connectButton" layoutX="135.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="get link">
          <font>
             <Font name="Fira Code Regular" size="13.0" />
          </font>
