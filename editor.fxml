@@ -43,7 +43,7 @@
           </Menu>
             <Menu fx:id="optionsMenu" mnemonicParsing="false" text="Options">
               <items>
-                <MenuItem fx:id="prefferences"  mnemonicParsing="false" text="prefferences" />
+                <MenuItem fx:id="prefferences" onAction="#show_configurations" mnemonicParsing="false" text="prefferences" />
               </items>
             </Menu>
           <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
