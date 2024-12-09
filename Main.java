@@ -458,7 +458,60 @@ public class Main extends Application{
 	
 	
 	
+	/**
+	 * Show information window
+	 */
+	public void show_infor(ActionEvent actn_evnt) throws IOException {
+		
+		//new Stage
+		Stage info_window = new Stage();
+		
+		//FXML Loader to load the UI from the fxml document
+		FXMLLoader _LOADER_ = new FXMLLoader(Main.class.getResource("info.fxml"));
+		
+		//Scene with the UI
+		Scene UI = new Scene(_LOADER_.load());
+		
+		
+		//set the window
+		info_window.setTitle("Information");
+		info_window.setResizable(false);
+		info_window.setScene(UI);
+		
+		//show the information window
+		info_window.show();
+		
+	}
 	
+	
+	
+	
+	/**
+	 * Show window with link to my profile in Facebook
+	 * Feel free to contact me!
+	 */
+	public void show_link(ActionEvent actn_evnt) throws IOException {
+		
+		//New stage
+		Stage linkWindow = new Stage();
+		
+		//FXMLLoader to load the UI
+		FXMLLoader _UI_ = new FXMLLoader();
+		
+		//Scene with the UI
+		@SuppressWarnings("static-access")
+		Scene _container_ = new Scene(_UI_.load(Main.class.getResource("link.fxml")));
+		
+		
+		//set up the window
+		linkWindow.setTitle("Link");
+		linkWindow.setResizable(false);
+		linkWindow.setScene(_container_);
+		
+		//show the link window
+		linkWindow.show();
+		
+	}
 	
 	
 	
