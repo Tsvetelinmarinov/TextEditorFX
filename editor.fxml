@@ -36,9 +36,9 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="copy" onAction="#cpy" mnemonicParsing="false" text="copy" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="paste" mnemonicParsing="false" text="paste" />
+                  <MenuItem fx:id="paste" onAction="#paste" mnemonicParsing="false" text="paste" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="deleteAll" mnemonicParsing="false" text="delete all" />
+                  <MenuItem fx:id="deleteAll" onAction="#dlt_all" mnemonicParsing="false" text="delete all" />
             </items>
           </Menu>
             <Menu fx:id="optionsMenu" mnemonicParsing="false" text="Options">
