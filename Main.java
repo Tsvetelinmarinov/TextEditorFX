@@ -133,6 +133,14 @@ public class Main extends Application{
 		JFileChooser file_chooser = new JFileChooser();
 		
 		
+		//File filters
+		FileNameExtensionFilter txt = new FileNameExtensionFilter("text file","txt");
+		
+		
+		//apply filters
+		file_chooser.setFileFilter(txt);
+		
+		
 		//Holds the response from the file chooser
 		int response;
 		
@@ -387,13 +395,81 @@ public class Main extends Application{
 		}
 		
 	}
-
+	
+	
+	
+	
+	
+	
 	/**
-	* Getter for the copied tex
-	*/
-	public String get_cpy_txt() {
-		return (String) copied_text;
-	} 
+	 * Show settings
+	 */
+	public void show_configurations(ActionEvent actn_evnt) throws IOException {
+		
+		//New stage
+		Stage settings_window = new Stage();
+		
+		//FXML Loader to load the UI from the fxml document
+		FXMLLoader _UI_loader = new FXMLLoader(Main.class.getResource("settings.fxml"));
+		
+		//Scene with the UI
+		Scene arg00 = new Scene(_UI_loader.load());
+		
+		
+		//setting up the window
+		settings_window.setTitle("Settings");
+		settings_window.setResizable(false);
+		settings_window.setScene(arg00);
+		
+		//show the settings window
+		settings_window.show();
+		
+	}
+	
+	
+	
+	
+	/**
+	 * Show manual settings
+	 */
+	@SuppressWarnings("static-access")
+	public void show_manual_config(ActionEvent actn_evnt) throws IOException {
+		
+		//Manual appearance configuration window
+		Stage arg00 = new Stage();
+		
+		//FXML Loader to load the UI from the fxml document
+		FXMLLoader _UI_LOADER_ = new FXMLLoader();
+		
+		//Scene with the UI
+		Scene arg01 = new Scene(_UI_LOADER_.load(Main.class.getResource(
+				                "manual_settings.fxml")));
+		
+		
+		//set up the window
+		arg00.setTitle("Manual aprearance configuration");
+		arg00.setResizable(false);
+		arg00.setScene(arg01);
+		
+		//show the manual appearance setting window
+		arg00.show();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Getter for the copied text
+	 */
+	public String get_cpy_txt() { return copied_text; }
+	
+	
 }
 
 
