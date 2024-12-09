@@ -387,22 +387,13 @@ public class Main extends Application{
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
-	 * Getter for the copied text
-	 */
-	public String get_cpy_txt() { return copied_text; }
-	
-	
+	* Getter for the copied tex
+	*/
+	public String get_cpy_txt() {
+		return (String) copied_text;
+	} 
 }
 
 
