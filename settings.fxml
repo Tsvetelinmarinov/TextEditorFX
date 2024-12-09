@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
@@ -83,7 +82,7 @@
             <DropShadow />
          </effect>
       </ComboBox>
-      <Button fx:id="manualButton" layoutX="270.0" layoutY="422.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="232.0" text="Configure manual">
+      <Button fx:id="manualButton" onAction="#show_manual_config" layoutX="270.0" layoutY="422.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="232.0" text="Configure manual">
          <font>
             <Font name="Fira Code Regular" size="14.0" />
          </font>
