@@ -339,6 +339,56 @@ public class Main extends Application{
 	
 	
 	
+	/**
+	 * Paste
+	 */
+	public void paste(ActionEvent acton_evnt) {
+		
+		//Check if the string that holds the copied text is empty
+		boolean has_not_copied_text = copied_text == "" ? true : false;
+		
+		
+		//if has not copied text show warning
+		if(has_not_copied_text)
+			JOptionPane.showInternalMessageDialog(null, "No copied text!",
+					 "Warning",JOptionPane.WARNING_MESSAGE);
+		
+		
+		//if has copied text paste it
+		if(!has_not_copied_text)
+			textBox.appendText((String)get_cpy_txt());
+		
+	}
+	
+	
+	
+	
+	/**
+	 * Delete all
+	 */
+	public void dlt_all(ActionEvent actn_evnt) {
+		
+		//Check if the text box has content
+		boolean text_box_is_empty = textBox.getText().isEmpty();
+		
+		
+		//if the text box is empty show warning
+		if(text_box_is_empty)
+			JOptionPane.showInternalMessageDialog(null, "Empty text filed!",
+					   "Warning",JOptionPane.WARNING_MESSAGE);
+		
+		
+		//if the text box has content - show warning about unsaved data and delete it
+		if(!text_box_is_empty) {
+			JOptionPane.showInternalMessageDialog(null,"Unsaved data will be lost!",
+					 "Warning",JOptionPane.WARNING_MESSAGE);
+			
+			textBox.setText("");
+		}
+		
+	}
+	
+	
 	
 	
 	
