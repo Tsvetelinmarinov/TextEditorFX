@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
@@ -51,7 +50,7 @@
             <Font name="Fira Code Regular" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="connectButton" layoutX="135.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="get link">
+      <Button fx:id="connectButton" onAction="#show_link" layoutX="135.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="get link">
          <font>
             <Font name="Fira Code Regular" size="13.0" />
          </font>
