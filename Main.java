@@ -56,7 +56,34 @@ public class Main extends Application{
 	private TextArea textBox;
 	
 
+	/**
+	 * Menu bar
+	 */
+	private MenuBar menuBar;
 	
+	
+	/**
+	 * File menu
+	 */
+	private Menu fileMenu;
+	
+	
+	/**
+	 * Edit menu
+	 */
+	private Menu editMenu;
+	
+	
+	/**
+	 * Options menu
+	 */
+	private Menu optionsMenu;
+	
+	
+	/**
+	 * Help menu
+	 */
+	private Menu helpMenu;
 	
 	
 	
@@ -90,7 +117,10 @@ public class Main extends Application{
 		 * New scene
 		 */
 		arg1 = new Scene(_root_,850,550);
-		
+
+		//apply design to the scene
+		arg1.getStylesheets().add(Main.class.getResource("classic_theme.css")
+				                 .toExternalForm());
 		
 		/**
 		 * Text box
@@ -104,7 +134,49 @@ public class Main extends Application{
 		textBox.setPrefHeight(_root_.getHeight() - 45);
 		//Create a drop shadow effect
 		textBox.setEffect(new DropShadow());
+		textBox.getStyleClass().add("text_box");
 		_root_.getChildren().add(textBox);
+
+
+		/**
+		 * Menu bar
+		 */
+		menuBar = new MenuBar();
+		menuBar.setBorder(null);
+		menuBar.setLayoutX(0);
+		menuBar.setLayoutY(0);
+		menuBar.setPrefWidth(230);
+		menuBar.setPrefHeight(30);
+		menuBar.getStyleClass().add("menu_bar");
+		_root_.getChildren().add(menuBar);
+		
+		
+		/**
+		 * File menu
+		 */
+		fileMenu = new Menu("File");
+		menuBar.getMenus().add(fileMenu);
+		
+		
+		/**
+		 * Edit menu
+		 */
+		editMenu = new Menu("Edit");
+		menuBar.getMenus().add(editMenu);
+		
+		
+		/**
+		 * Options menu
+		 */
+		optionsMenu = new Menu("Options");
+		menuBar.getMenus().add(optionsMenu);
+		
+		
+		/**
+		 * Help menu
+		 */
+		helpMenu = new Menu("Help");
+		menuBar.getMenus().add(helpMenu);
 		
 		
 		
@@ -128,19 +200,3 @@ public class Main extends Application{
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
