@@ -86,7 +86,40 @@ public class Main extends Application{
 	private Menu helpMenu;
 	
 	
+	/**
+	 * New file menu item
+	 */
+	private MenuItem newFile;
 	
+	
+	/**
+	 * Open menu item
+	 */
+	private MenuItem load;
+	
+	
+	/**
+	 * Save menu item
+	 */
+	private MenuItem export;
+	
+	
+	/**
+	 * New window menu item
+	 */
+	private MenuItem newWindow;
+	
+	
+	/**
+	 * Restart menu item
+	 */
+	private MenuItem reboot;
+	
+	
+	/**
+	 * Exit menu item
+	 */
+	private MenuItem terminate;
 	
 	
 	
@@ -177,7 +210,48 @@ public class Main extends Application{
 		 */
 		helpMenu = new Menu("Help");
 		menuBar.getMenus().add(helpMenu);
+
 		
+                /**
+		 * new file
+		 */
+		newFile = new MenuItem("new file");
+		fileMenu.getItems().add(newFile);
+
+		
+		/**
+		 * open
+		 */
+		load = new MenuItem("open");
+		fileMenu.getItems().add(load);
+		
+		
+		/**
+		 * save
+		 */
+		export = new MenuItem("save");
+		fileMenu.getItems().add(export);
+		
+		
+		/**
+		 * new window
+		 */
+		newWindow = new MenuItem("new window");
+		fileMenu.getItems().add(newWindow);
+		
+		
+		/**
+		 * restart
+		 */
+		reboot = new MenuItem("restart");
+		fileMenu.getItems().add(reboot);
+		
+		
+		/**
+		 * close
+		 */
+		terminate = new MenuItem("close");
+		fileMenu.getItems().add(terminate);
 		
 		
 		/**
@@ -186,6 +260,7 @@ public class Main extends Application{
 		arg0.setTitle("TextEditor++");
 		arg0.setResizable(false);
 		arg0.setScene(arg1);
+
 		
 		/**
 		 * show the application
