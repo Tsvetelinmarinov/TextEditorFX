@@ -120,6 +120,30 @@ public class Main extends Application{
 	 * Exit menu item
 	 */
 	private MenuItem terminate;
+
+
+	/**
+	 * Select all menu item
+	 */
+	private MenuItem selectAll;
+	
+	
+	/**
+	 * Copy menu item
+	 */
+	private MenuItem cpy;
+	
+	
+	/**
+	 * Paste menu item
+	 */
+	private MenuItem paste;
+	
+	
+	/**
+	 * Delete menu item
+	 */
+	private MenuItem dltAll;
 	
 	
 	
@@ -252,6 +276,34 @@ public class Main extends Application{
 		 */
 		terminate = new MenuItem("close");
 		fileMenu.getItems().add(terminate);
+
+
+		/**
+		 * select all 
+		 */
+		selectAll = new MenuItem("select all");
+		editMenu.getItems().add(selectAll);
+		
+		
+		/**
+		 * copy
+		 */
+		cpy = new MenuItem("copy");
+		editMenu.getItems().add(cpy);
+		
+		
+		/**
+		 * paste
+		 */
+		paste = new MenuItem("paste");
+		editMenu.getItems().add(paste);
+		
+		
+		/**
+		 * delete all
+		 */
+		dltAll = new MenuItem("delete all");
+		editMenu.getItems().add(dltAll);
 		
 		
 		/**
