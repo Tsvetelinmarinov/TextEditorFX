@@ -145,6 +145,18 @@ public class Main extends Application{
 	 */
 	private MenuItem dltAll;
 	
+
+        /**
+        *Appearance settings menu item
+        */
+        private MenuItem appear;
+
+
+        /**
+        * About menu item
+        */
+        private MenuItem info;
+
 	
 	
 	
@@ -304,6 +316,20 @@ public class Main extends Application{
 		 */
 		dltAll = new MenuItem("delete all");
 		editMenu.getItems().add(dltAll);
+
+
+		 /**
+                 * appearance
+                 */
+                appear = new MenuItem("appearance");
+                optionsMenu.getItems().add(appear);
+
+
+                 /**
+                 * information
+                 */
+                info = new MenuItem("information");
+                optionsMenu.getItems().add(info);
 		
 		
 		/**
