@@ -283,6 +283,7 @@ public class Main extends Application{
 		 */
 		newFile = new MenuItem("new file");
 		fileMenu.getItems().add(newFile);
+		newFile.setOnAction(event -> new _SYSTEM_().mk_file());
 
 		
 		/**
@@ -362,7 +363,34 @@ public class Main extends Application{
                 optionsMenu.getItems().add(info);
 		
 	}
-	
+
+
+
+	/**
+     * Main functionality
+     */
+    public class _SYSTEM_{
+
+
+        /**
+         * Create new file
+         */
+        public void mk_file(){
+
+            //Show warning about unsaved data
+            JOptionPane.showInternalMessageDialog(null,"Unsaved data will be lost!",
+                    "Warning",JOptionPane.WARNING_MESSAGE
+            );
+
+
+            //Delete the text from the text box
+            textBox.setText("");
+
+        }
+
+
+
+    }
 	
 	
 }
