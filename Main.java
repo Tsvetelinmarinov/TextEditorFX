@@ -481,12 +481,10 @@ public class Main extends Application{
         		}
         		
         		
-        	}else{
-			JOptionPane.showInternalMessageDialog(null,"Nothing selected!","Warning",
+        	}else JOptionPane.showInternalMessageDialog(null,"Nothing selected!","Warning",
 							      JOptionPane.WARNING_MESSAGE);
-		}
-        	
-        	
+		
+
         }
 
 	    
