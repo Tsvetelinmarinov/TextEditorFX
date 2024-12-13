@@ -283,7 +283,7 @@ public class Main extends Application{
 		 */
 		newFile = new MenuItem("new file");
 		fileMenu.getItems().add(newFile);
-		newFile.setOnAction(event -> new _SYSTEM_().mk_file());
+		newFile.setOnAction(command -> new _SYSTEM_().mk_file());
 
 		
 		/**
@@ -291,6 +291,17 @@ public class Main extends Application{
 		 */
 		load = new MenuItem("open");
 		fileMenu.getItems().add(load);
+		load.setOnAction(command -> {
+			try {
+				new _SYSTEM_().get_local_file();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showInternalMessageDialog(null,"Directory not found!",
+						"ERROR",JOptionPane.ERROR_MESSAGE);
+				
+				e.printStackTrace();
+			}
+		});
 		
 		
 		/**
@@ -389,6 +400,96 @@ public class Main extends Application{
         }
 
 
+
+	    /**
+         * Open local file in the text box
+         */
+        @SuppressWarnings("static-access")
+        private void get_local_file() throws IOException {
+        	
+        	//File chooser to select a file
+        	JFileChooser chooser = new JFileChooser();
+        	
+        	
+        	//The new file - copy of the local file selected with the 
+        	//file chooser
+        	File document;
+        	
+        	
+        	//Scanner to scan the content of the local file
+        	Scanner _SCAN_ = null;
+        	
+        	
+        	//Holds the text content of the local file
+        	String content;
+        	
+        	
+        	//Holds the response from the file chooser
+        	int response;
+        	
+        	
+        	//Holds the boolean value of the file chooser response
+        	//for system use
+        	boolean _HAS_SELECTED_FILE_;
+        	
+        	
+            //File name extension filters
+        	FileNameExtensionFilter txt = new FileNameExtensionFilter("text file","txt");
+        	
+        	
+        	//apply filters
+        	chooser.setFileFilter(txt);
+        	
+        	
+        	
+        	//Show file manager
+        	response = chooser.showOpenDialog(null);
+        	
+        	
+        	//Convert the return value from the file chooser to a boolean for
+        	//system use
+        	_HAS_SELECTED_FILE_ = (response == chooser.APPROVE_OPTION)
+        			? true : false;
+        	
+        	
+        	//Check the response
+        	//if true - make the file and the scanner
+        	if(_HAS_SELECTED_FILE_) {
+        		
+                document = new File(chooser.getSelectedFile().getAbsolutePath());
+   	
+        		//check if the file is created
+        		if(document.isFile()) {
+        			
+        			//create the scanner
+        			_SCAN_ = new Scanner(document);
+        			
+        			while(_SCAN_.hasNextLine()) {
+        				
+        				//scan the file content until the next line
+        				//and get the text
+        				content = _SCAN_.nextLine()+"\n";
+        				
+        				//append the text to the text box
+        				textBox.appendText(content);
+        				
+        			}
+        			
+        			//close the scanner to avoid direct contact with the system
+        			_SCAN_.close();
+        			
+        		}
+        		
+        		
+        	}else{
+			JOptionPane.showInternalMessageDialog(null,"Nothing selected!","Warning",
+							      JOptionPane.WARNING_MESSAGE);
+		}
+        	
+        	
+        }
+
+	    
 
     }
 	
