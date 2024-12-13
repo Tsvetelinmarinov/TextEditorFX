@@ -191,6 +191,36 @@ public class Main extends Application{
 		arg1.getStylesheets().add(Main.class.getResource("classic_theme.css")
 				                 .toExternalForm());
 		
+		
+		
+		/**
+		 * set up the window
+		 */
+		arg0.setTitle("TextEditor++");
+		arg0.setResizable(false);
+		arg0.setScene(arg1);
+
+
+		/**
+                * Build the application and show it on the screen
+                */
+		build_app();
+
+		
+		/**
+		 * show the application
+		 */
+		arg0.show();
+		
+	}
+	
+	
+
+	/**
+        * Build the application
+	*/
+	private void build_app(){
+
 		/**
 		 * Text box
 		 */
@@ -331,24 +361,7 @@ public class Main extends Application{
                 info = new MenuItem("information");
                 optionsMenu.getItems().add(info);
 		
-		
-		/**
-		 * set up the window
-		 */
-		arg0.setTitle("TextEditor++");
-		arg0.setResizable(false);
-		arg0.setScene(arg1);
-
-		
-		/**
-		 * show the application
-		 */
-		arg0.show();
-		
 	}
-	
-	
-	
 	
 	
 	
