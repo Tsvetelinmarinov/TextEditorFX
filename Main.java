@@ -478,7 +478,9 @@ public class Main extends Application{
         			//close the scanner to avoid direct contact with the system
         			_SCAN_.close();
         			
-        		}
+        		}else JOptionPane.showInternalMessageDialog(null, 
+        				"Error while creating file!",
+        				 "Error",JOptionPane.ERROR_MESSAGE);
         		
         		
         	}else JOptionPane.showInternalMessageDialog(null,"Nothing selected!","Warning",
