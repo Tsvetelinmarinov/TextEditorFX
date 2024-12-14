@@ -9,19 +9,14 @@ package appdata;
 
 
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
-import javafx.fxml.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.*;
 import java.io.*;
-import javafx.beans.value.*;
-import javafx.beans.property.*;
-import javafx.scene.paint.*;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 
@@ -309,6 +304,17 @@ public class Main extends Application{
 		 */
 		export = new MenuItem("save");
 		fileMenu.getItems().add(export);
+		export.setOnAction(command -> {
+			try {
+				new _SYSTEM_().export_data();
+			}catch(IOException e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showInternalMessageDialog(null,"Error exporting file!",
+						"ERROR",JOptionPane.ERROR_MESSAGE);
+				
+				e.printStackTrace();
+			}
+		});
 		
 		
 		/**
@@ -487,6 +493,65 @@ public class Main extends Application{
 							      JOptionPane.WARNING_MESSAGE);
 		
 
+        }
+
+
+
+	     /**
+         * Export data to local file in the computer
+         */
+        @SuppressWarnings("static-access")
+        private void export_data() throws IOException {
+        	
+        	//File chooser to select the file path
+        	JFileChooser file_chooser = new JFileChooser();
+        	
+        	
+        	//The new file
+        	File export_file;
+        	
+        	
+        	//Print writer to write the text from the text box
+        	//to the new file
+        	PrintWriter _PRINTER_ = null;
+        	
+        	
+        	//Holds the response from the file chooser
+        	int resp;
+        	
+        	
+        	//Holds boolean value of the response for system use
+        	boolean PATH_IS_SELECTED;
+        	
+        	
+        	
+        	//show file manager and select the path and the name of the
+        	//new file and get the response
+        	resp = file_chooser.showSaveDialog(null);
+        	
+        	
+        	//convert the response to a boolean value
+        	PATH_IS_SELECTED = (resp == file_chooser.APPROVE_OPTION)
+        			? true : false;
+        	
+        	
+        	//if path is selected create the new file
+        	if(PATH_IS_SELECTED) {
+        		
+        		export_file = new File(file_chooser.getSelectedFile().getAbsolutePath());
+        		
+        		//create the printer
+        		_PRINTER_ = new PrintWriter(export_file);
+        		
+        		//print the text from the text box to the new file
+        		_PRINTER_.println(textBox.getText());
+        		
+        		//close the printer to avoid direct access to the system
+        		_PRINTER_.close();
+        		
+        	}
+        	
+        	
         }
 
 	    
