@@ -322,6 +322,7 @@ public class Main extends Application{
 		 */
 		newWindow = new MenuItem("new window");
 		fileMenu.getItems().add(newWindow);
+		newWindow.setOnAction(command -> new _SYSTEM_()._clone_());
 		
 		
 		/**
@@ -553,6 +554,29 @@ public class Main extends Application{
         	
         	
         }
+
+
+
+	 /**
+        * Open new window 
+        */
+        private void _clone_(){   
+            
+            //new stage
+            Stage arg00 = new Stage();
+            
+            //New scene
+            Scene arg01 = (Scene) arg1;
+            
+            //set up the new window
+            arg00.setTitle("TextEditor++");
+            arg00.setResizable(false);
+            arg00.setScene(arg01);
+            
+            //show the new window
+            arg00.show();
+            
+        } 
 
 	    
 
