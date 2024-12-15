@@ -163,18 +163,31 @@ public class Main extends Application{
 	
 	
 	
-	
-	
-	
-	
-	
+	 /**
+        * Launch the application 
+        * @param stg
+        * @throws java.lang.Exception
+        */
 	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		/**
+	public void start(Stage arg0) throws Exception { build_app(); }
+	
+	
+
+
+
+	
+	/**
+        * Build the application
+	*/
+	private void build_app(){
+
+               /**
 		 * Parent component
 		 */
 		_root_ = new AnchorPane();
+
+
+		Stage arg0 = new Stage();
 		
 		
 		/**
@@ -187,7 +200,6 @@ public class Main extends Application{
 				                 .toExternalForm());
 		
 		
-		
 		/**
 		 * set up the window
 		 */
@@ -195,26 +207,12 @@ public class Main extends Application{
 		arg0.setResizable(false);
 		arg0.setScene(arg1);
 
-
-		/**
-                * Build the application and show it on the screen
-                */
-		build_app();
-
 		
 		/**
 		 * show the application
 		 */
 		arg0.show();
 		
-	}
-	
-	
-
-	/**
-        * Build the application
-	*/
-	private void build_app(){
 
 		/**
 		 * Text box
@@ -330,6 +328,7 @@ public class Main extends Application{
 		 */
 		reboot = new MenuItem("restart");
 		fileMenu.getItems().add(reboot);
+		reboot.setOnAction(command -> new _SYSTEM_().reboot(arg0));
 		
 		
 		/**
@@ -578,7 +577,42 @@ public class Main extends Application{
             
         } 
 
-	    
+
+
+        /**
+        * Restart the application 
+        */
+        private void reboot(Stage window){
+            
+            //show warning about unsaved data
+            JOptionPane.showInternalMessageDialog(null,"Unsaved data will be lost",
+                "Warning",JOptionPane.WARNING_MESSAGE)
+            ;
+            
+            
+            //close current window
+            window.close();
+            
+            
+            //make window
+            Stage arg000 = new Stage();
+            
+            //set the default UI
+            Scene _UI_ = (Scene) arg1;
+            
+            //delete the text from the text box
+            textBox.setText("");
+            
+            //set the window
+            arg000.setTitle("TextEditor++");
+            arg000.setResizable(false);
+            arg000.setScene(_UI_);
+            
+            //show the new window
+            arg000.show();
+            
+        }  
+	
 
     }
 	
