@@ -336,6 +336,7 @@ public class Main extends Application{
 		 */
 		terminate = new MenuItem("close");
 		fileMenu.getItems().add(terminate);
+		terminate.setOnAction(command -> new _SYSTEM_().terminate());
 
 
 		/**
@@ -611,7 +612,29 @@ public class Main extends Application{
             //show the new window
             arg000.show();
             
-        }  
+        }
+
+
+
+
+	/**
+        * Close the application 
+        */
+        private void terminate() {
+        	
+        	//Ask
+        	int rspn = JOptionPane.showInternalConfirmDialog(null, "Do you really want to quit?",
+        			  "You are about to quit",JOptionPane.YES_NO_OPTION);
+        	
+        	//Convert the response from the option window to a boolean value for system use
+        	boolean WANT_TO_QUIT = (rspn == JOptionPane.YES_OPTION) ? true : false;
+        	
+        	
+        	//Check the response
+        	// if true -- terminate the application
+        	if(WANT_TO_QUIT) System.exit(0);
+        	
+        }
 	
 
     }
