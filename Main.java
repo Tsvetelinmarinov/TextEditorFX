@@ -386,13 +386,13 @@ public class Main extends Application{
 	/**
      * Main functionality
      */
-    public class _SYSTEM_{
+    private class _SYSTEM_{
 
 
         /**
          * Create new file
          */
-        public void mk_file(){
+        private void mk_file(){
 
             //Show warning about unsaved data
             JOptionPane.showInternalMessageDialog(null,"Unsaved data will be lost!",
