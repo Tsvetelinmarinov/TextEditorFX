@@ -344,6 +344,7 @@ public class Main extends Application{
 		 */
 		selectAll = new MenuItem("select all");
 		editMenu.getItems().add(selectAll);
+		selectAll.setOnAction(command -> new _SYSTEM_().select_all());
 		
 		
 		/**
@@ -351,6 +352,7 @@ public class Main extends Application{
 		 */
 		cpy = new MenuItem("copy");
 		editMenu.getItems().add(cpy);
+		cpy.setOnAction(command -> new _SYSTEM_().cpy());
 		
 		
 		/**
@@ -358,6 +360,7 @@ public class Main extends Application{
 		 */
 		paste = new MenuItem("paste");
 		editMenu.getItems().add(paste);
+		paste.setOnAction(command -> new _SYSTEM_().paste_copied_text());
 		
 		
 		/**
@@ -635,9 +638,76 @@ public class Main extends Application{
         	if(WANT_TO_QUIT) System.exit(0);
         	
         }
+
+
+
+
+	 /**
+         * Select all the text in the text box
+         */
+        private void select_all() {
+        	
+        	//Check if the text box has text
+        	boolean _HAS_NOT_CONTENT_ = textBox.getText().isEmpty() ? true : false;
+        	
+        	
+        	//if has text in the box, select it
+        	if(!_HAS_NOT_CONTENT_) textBox.selectAll();
+        	
+        	//if has not text in the box show warning
+        	else JOptionPane.showInternalMessageDialog(null, "Empty text filed!",
+        			  "Warning",JOptionPane.WARNING_MESSAGE);
+        	
+        }
+        
+        
+        
+        /**
+         * Copy text
+         */
+        private void cpy() {
+        	
+        	//check if the text box has text
+        	boolean HAS_TEXT = (textBox.getText().isEmpty()) ? false : true;
+        	
+        	
+        	//if has text, copy it
+        	if(HAS_TEXT) cpyText = (String)textBox.getSelectedText();
+        	
+        	//if has not text show warning
+        	else JOptionPane.showInternalMessageDialog(null, "Empty text filed!",
+        			 "Warning",JOptionPane.WARNING_MESSAGE);
+        	
+        }
+        
+        
+        
+        
+        /**
+         * Paste copied text
+         */
+        private void paste_copied_text() {
+        	
+        	//check if the string that holds the copied text is empty
+        	boolean _HAS_COPIED_TEXT_ = get_cpy_txt().isEmpty() ? false : true; 
+        	
+        	//if has copied text, paste it
+        	if(_HAS_COPIED_TEXT_) textBox.appendText((String)get_cpy_txt());
+        	
+        	//else show warning
+        	else JOptionPane.showMessageDialog(null, "No copied text!","Warning",
+        			 JOptionPane.WARNING_MESSAGE);
+        	
+        }
 	
 
     }
+
+
+    /**
+     * Getter for the copied text
+     */
+    private String get_cpy_txt() { return cpyText; }
 	
 	
 }
