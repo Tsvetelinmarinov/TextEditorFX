@@ -121,6 +121,12 @@ public class Main extends Application{
 	 * Select all menu item
 	 */
 	private MenuItem selectAll;
+
+
+	/**
+        * Holds the copied text
+	*/
+	private String cpyText;
 	
 	
 	/**
