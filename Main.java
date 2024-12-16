@@ -374,6 +374,7 @@ public class Main extends Application{
 		 */
 		dltAll = new MenuItem("delete all");
 		editMenu.getItems().add(dltAll);
+		dltAll.setOnAction(command -> new _SYSTEM_().delete_text());
 
 
 		 /**
@@ -705,6 +706,30 @@ public class Main extends Application{
         			 JOptionPane.WARNING_MESSAGE);
         	
         }
+
+
+
+
+        /**
+         * Delete all the text in the text box
+         */
+        private void delete_text() {
+
+            //check if the text box has text
+            boolean _HAS_TEXT_ = textBox.getText().isEmpty() ? false : true;
+
+            //if the text box has text delete it
+            if(_HAS_TEXT_) textBox.setText("");
+
+                //if the text box has not text show warning
+            else JOptionPane.showMessageDialog(null,
+                    "Empty text filed!","Warning",
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+        }
+
+	    
 	
 
     }
