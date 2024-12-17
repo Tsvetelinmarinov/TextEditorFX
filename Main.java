@@ -382,6 +382,7 @@ public class Main extends Application{
                  */
                 appear = new MenuItem("appearance");
                 optionsMenu.getItems().add(appear);
+		appear.setOnAction(command -> new _SYSTEM_().show_config_win());
 
 
                  /**
@@ -726,6 +727,112 @@ public class Main extends Application{
                     "Empty text filed!","Warning",
                     JOptionPane.WARNING_MESSAGE
             );
+
+        }
+
+
+
+
+	 /**
+         * Show settings window
+         */
+        private void show_config_win(){
+
+            //New stage
+            Stage arg010 = new Stage();
+
+            //Anchor pare as a root component
+            AnchorPane _CONFIG_ROOT_ = new AnchorPane();
+            _CONFIG_ROOT_.setStyle("-fx-background:WHITE;");
+
+            //New scene
+            Scene arg011 = new Scene(_CONFIG_ROOT_,800,570);
+
+            //Spacer
+            Separator sp1 = new Separator();
+            sp1.setLayoutX(0);
+            sp1.setLayoutY(33);
+            sp1.setPrefWidth(340);
+            sp1.setPrefHeight(5);
+            _CONFIG_ROOT_.getChildren().add(sp1);
+
+            //Spacer
+            Separator sp2 = new Separator();
+            sp2.setLayoutX(470);
+            sp2.setLayoutY(33);
+            sp2.setPrefWidth(330);
+            sp2.setPrefHeight(5);
+            _CONFIG_ROOT_.getChildren().add(sp2);
+
+            //Logo label
+            Label appear_logo = new Label("Configure font");
+            appear_logo.setFont(new Font("JetBrains Mono",17));
+            appear_logo.setStyle("-fx-text-fill:rgb(60,60,60);");
+            appear_logo.setLayoutX(350);
+            appear_logo.setLayoutY(20);
+            appear_logo.setPrefWidth(120);
+            _CONFIG_ROOT_.getChildren().add(appear_logo);
+
+            //Font family label
+            Label f_family = new Label("font");
+            f_family.setFont(new Font((String)appear_logo.getFont().getFamily(),17));
+            f_family.setStyle("-fx-text-fill:rgb(60,60,60);");
+            f_family.setLayoutX(40);
+            f_family.setLayoutY(100);
+            _CONFIG_ROOT_.getChildren().add(f_family);
+
+            //Holds the local font names
+            String[] sys_fonts = GraphicsEnvironment.getLocalGraphicsEnvironment()
+                    .getAvailableFontFamilyNames()
+            ;
+            ObservableList<String> fonts = FXCollections.observableArrayList(sys_fonts);
+
+
+            //Combo box with the theme names
+            ComboBox<String> font_box = new ComboBox<String>(fonts);
+            font_box.setLayoutX(80);
+            font_box.setLayoutY(102);
+            font_box.setPrefWidth(200);
+            font_box.setPrefHeight(17);
+            font_box.setValue((String)textBox.getFont().getFamily());
+            _CONFIG_ROOT_.getChildren().add(font_box);
+            font_box.setCellFactory(listView -> new ListCell<String>() {
+                @Override protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item != null) {
+                        setText(item);
+                        setFont(Font.font(item, 14));
+                    } else {
+                        setText(null);
+                        setFont(Font.font(14));
+                    }
+                }
+            });
+            /*
+            font_box.setButtonCell(new ListCell<String>() {
+                @Override protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item != null) {
+                        setText(item);
+                        setFont(Font.font(item, 14));
+                    } else {
+                        setText(null);
+                        setFont(Font.font(14));
+                    }
+                }
+            });
+            */
+            font_box.setOnAction(command -> {
+               textBox.setFont(new Font((String)font_box.getValue(),textBox.getFont().getSize()));
+            });
+
+            //set the window
+            arg010.setTitle("Appearance");
+            arg010.setResizable(false);
+            arg010.setScene(arg011);
+
+            //show the settings window
+            arg010.show();
 
         }
 
