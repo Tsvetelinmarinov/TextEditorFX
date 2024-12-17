@@ -826,6 +826,43 @@ public class Main extends Application{
                textBox.setFont(new Font((String)font_box.getValue(),textBox.getFont().getSize()));
             });
 
+
+            //Font size label
+            Label f_size = new Label("size");
+            f_size.setFont(new Font((String)appear_logo.getFont().getFamily(),17));
+            f_size.setStyle("-fx-text-fill:rgb(60,60,60);");
+            f_size.setLayoutX(320);
+            f_size.setLayoutY(100);
+            _CONFIG_ROOT_.getChildren().add(f_size);
+
+
+            //Spinner model for the size spinner
+            SpinnerValueFactory<Integer> f_size_spin_mdl = new SpinnerValueFactory
+                    .IntegerSpinnerValueFactory(0,50,20)
+            ;
+
+
+            //Font size spinner
+            Spinner<Integer> size_spin = new Spinner<Integer>(f_size_spin_mdl);
+            size_spin.setLayoutX(360);
+            size_spin.setLayoutY(100);
+            size_spin.setPrefWidth(70);
+            size_spin.setPrefHeight(30);
+            size_spin.setStyle("-fx-font-family:'Fira Code';");
+            size_spin.setStyle("-fx-background-color:WHITE;");
+            _CONFIG_ROOT_.getChildren().add(size_spin);
+            size_spin.valueProperty().addListener((
+                     arg00,
+                     arg01,
+                     arg02) -> {
+
+                     textBox.setFont(new Font((String)textBox.getFont().getFamily(),
+                             (int)size_spin.getValue()))
+                     ;
+
+            });
+	    
+
             //set the window
             arg010.setTitle("Appearance");
             arg010.setResizable(false);
