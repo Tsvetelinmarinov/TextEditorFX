@@ -850,6 +850,7 @@ public class Main extends Application{
             size_spin.setPrefHeight(30);
             size_spin.setStyle("-fx-font-family:'Fira Code';");
             size_spin.setStyle("-fx-background-color:WHITE;");
+	    size_spin.setStyle("-fx-font-size:20;");
             _CONFIG_ROOT_.getChildren().add(size_spin);
             size_spin.valueProperty().addListener((
                      arg00,
