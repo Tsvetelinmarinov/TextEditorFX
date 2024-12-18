@@ -862,6 +862,55 @@ public class Main extends Application{
                      ;
 
             });
+
+
+
+
+	    //Font style label
+            Label f_style = new Label("style");
+            f_style.setFont((Font)appear_logo.getFont());
+            f_style.setStyle("-fx-text-fill:rgb(60,60,60);");
+            f_style.setLayoutX(470);
+            f_style.setLayoutY(100);
+            _CONFIG_ROOT_.getChildren().add(f_style);
+
+
+            //hold the font style string representations
+            String[] f_s = { "normal","bold","italic" };
+
+            //Converted f_s
+            ObservableList<String> f_ss = FXCollections.observableArrayList(f_s);
+
+            //Combo box with the options
+            ComboBox<String> style_box = new ComboBox<String>(f_ss);
+            style_box.setValue("normal");
+            style_box.setPrefWidth(100);
+            style_box.setPrefHeight(17);
+            style_box.setLayoutX(515);
+            style_box.setLayoutY(102);
+            _CONFIG_ROOT_.getChildren().add(style_box);
+            style_box.valueProperty().addListener((
+                   String box_value = style_box.getValue();
+
+                           if(Objects.equals(box_value, "normal")) {
+                               textBox.setFont(Font.font((String)textBox.getFont().getFamily(),
+                                       FontWeight.NORMAL,(int)textBox.getFont().getSize())
+                               );
+                           }
+
+                           if(Objects.equals(box_value, "bold")){
+                               textBox.setFont(Font.font((String)textBox.getFont().getFamily(),
+                                       FontWeight.BOLD,(int)textBox.getFont().getSize())
+                               );
+                           }
+
+                           if(Objects.equals(box_value,"italic")){
+                               textBox.setFont(Font.font((String)textBox.getFont().getFamily(),
+                                       FontPosture.ITALIC,(int)textBox.getFont().getSize())
+                               );
+                           }
+            );
+		
 	    
 
             //set the window
