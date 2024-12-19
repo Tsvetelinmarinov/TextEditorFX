@@ -910,7 +910,34 @@ public class Main extends Application{
                                );
                            }
             );
-		
+
+
+
+
+	     //Font color label
+            Label f_clr = new Label("color");
+            f_clr.setFont((Font)appear_logo.getFont());
+            f_clr.setStyle("-fx-text-fill:rgb(60,60,60);");
+            f_clr.setLayoutX(655);
+            f_clr.setLayoutY(100);
+            _CONFIG_ROOT_.getChildren().add(f_clr);
+
+
+            //Color picker to pick a color or create new one
+            ColorPicker clrpckr = new ColorPicker();
+            clrpckr.setPrefWidth(90);
+            clrpckr.setPrefHeight(25);
+            clrpckr.setLayoutX(706);
+            clrpckr.setLayoutY(101);
+            _CONFIG_ROOT_.getChildren().add(clrpckr);
+            clrpckr.setOnAction(command -> {
+                //Get the color from the color picker
+                Color color = clrpckr.getValue();
+
+                //apply changes
+                textBox.setStyle("-fx-text-fill:" + string_to_hex(color) + ";");
+
+            });
 	    
 
             //set the window
@@ -933,6 +960,65 @@ public class Main extends Application{
      * Getter for the copied text
      */
     private String get_cpy_txt() { return cpyText; }
+
+
+     /**
+     * Get the text representation of a color
+     */
+    private Color get_clr_txt(TextArea arg0){
+
+        //Get the styles
+        String style = textBox.getStyle();
+
+        //Extract the color params from the style property
+        String clr_str = extract_clr_from_css_prop(style);
+
+        //Convert the text to a color
+        return Color.web(clr_str);
+
+    }
+
+
+
+
+    /**
+     * Trim color parameters from java fx css property
+     */
+    private String extract_clr_from_css_prop(String arg01){
+
+        //Default color string if the other from the css property is missing
+        String clr_str = "#000000";
+
+        String[] props = arg01.split(";");
+
+        //Loop over properties and cut the unuseful parth if the css property
+        for(String prop : props){
+            if(prop.trim().startsWith("-fx-text-fill:")){
+                clr_str = prop.split(":")[1].trim();
+                break;
+            }
+        }
+
+        return clr_str;
+
+    }
+
+
+
+
+    /**
+     * Convert a color string to hex string
+     */
+    private String string_to_hex(Color arg03){
+
+        return String.format(
+                "#%02X%02X%02X",
+                (int)(arg03.getRed() * 255),
+                (int)(arg03.getGreen() * 255),
+                (int)(arg03.getBlue() * 255)
+        );
+
+    }
 	
 	
 }
