@@ -760,7 +760,7 @@ public class Main extends Application{
             Separator sp2 = new Separator();
             sp2.setLayoutX(470);
             sp2.setLayoutY(33);
-            sp2.setPrefWidth(330);
+            sp2.setPrefWidth(350);
             sp2.setPrefHeight(5);
             _CONFIG_ROOT_.getChildren().add(sp2);
 
@@ -929,6 +929,9 @@ public class Main extends Application{
             clrpckr.setPrefHeight(25);
             clrpckr.setLayoutX(706);
             clrpckr.setLayoutY(101);
+	    String style_prop = textBox.getStyle();
+            Color editor_fore = get_clr_txt(style_prop);
+            clrpckr.setValue(editor_fore);
             _CONFIG_ROOT_.getChildren().add(clrpckr);
             clrpckr.setOnAction(command -> {
                 //Get the color from the color picker
@@ -960,6 +963,35 @@ public class Main extends Application{
                style_box.setValue("normal");
                clrpckr.setValue(Color.BLACK);
             });
+
+
+
+	    //Theme section label
+            Label theme_section = new Label("Configure theme");
+            theme_section.setFont((Font)appear_logo.getFont());
+            theme_section.setStyle("-fx-text-fill:rgb(60,60,60);");
+            _CONFIG_ROOT_.getChildren().add(theme_section);
+            theme_section.setLayoutX(365);
+            theme_section.setLayoutY(300);
+
+
+            //Spacer
+            Separator sp3 = new Separator();
+            sp3.setPrefWidth(355);
+            sp3.setPrefHeight(5);
+            sp3.setLayoutX(0);
+            sp3.setLayoutY(312);
+            _CONFIG_ROOT_.getChildren().add(sp3);
+
+
+            //Spacer
+            Separator sp4 = new Separator();
+            sp4.setPrefWidth(340);
+            sp4.setPrefHeight(5);
+            sp4.setLayoutX(502);
+            sp4.setLayoutY(312);
+            _CONFIG_ROOT_.getChildren().add(sp4);
+
 		
 	    
 
