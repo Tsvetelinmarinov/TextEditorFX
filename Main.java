@@ -938,6 +938,29 @@ public class Main extends Application{
                 textBox.setStyle("-fx-text-fill:" + string_to_hex(color) + ";");
 
             });
+
+
+
+            /**
+             * Reset font button
+             */
+            Button reset_font = new Button("reset defaults");
+            reset_font.setFont(new Font("System",15));
+            reset_font.setPrefWidth(200);
+            reset_font.setPrefHeight(15);
+            reset_font.setLayoutX(300);
+            reset_font.setLayoutY(200);
+            _CONFIG_ROOT_.getChildren().add(reset_font);
+            reset_font.setOnAction(command -> {
+               textBox.setFont(new Font("Consolas",20));
+               textBox.setStyle("-fx-font-style:normal;");
+               textBox.setStyle("-fx-text-fill:BLACK;");
+               font_box.setValue((String)textBox.getFont().getFamily());
+               size_spin.getValueFactory().setValue(((int)textBox.getFont().getSize()));
+               style_box.setValue("normal");
+               clrpckr.setValue(Color.BLACK);
+            });
+		
 	    
 
             //set the window
