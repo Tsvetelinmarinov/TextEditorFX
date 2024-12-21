@@ -992,6 +992,41 @@ public class Main extends Application{
             sp4.setLayoutY(312);
             _CONFIG_ROOT_.getChildren().add(sp4);
 
+
+
+	     //Holds the theme options
+            String[] themes = { "classic","dark","gray" };
+            //Convert the string array to observable array list
+            ObservableList<String> theme_options = FXCollections.observableArrayList(themes);
+
+
+            //Theme box with the theme option
+            ComboBox<String> theme_box = new ComboBox<String>(theme_options);
+            theme_box.setValue("classic");
+            theme_box.setPrefWidth(100);
+            theme_box.setPrefHeight(20);
+            theme_box.setLayoutX(250);
+            theme_box.setLayoutY(348);
+            theme_box.setStyle("-fx-font-size:14;");
+            _CONFIG_ROOT_.getChildren().add(theme_box);
+
+
+            //Theme label
+            Label theme = new Label("theme");
+            theme.setFont((Font)appear_logo.getFont());
+            theme.setLayoutX(190);
+            theme.setLayoutY(348);
+            _CONFIG_ROOT_.getChildren().add(theme);
+
+
+            //Configure appearance manual
+            Button mnl_config = new Button("configure appearance manual");
+            mnl_config.setFont((Font)reset_font.getFont());
+            mnl_config.setPrefSize(250,18);
+            mnl_config.setLayoutX(400);
+            mnl_config.setLayoutY(348);
+            _CONFIG_ROOT_.getChildren().add(mnl_config);
+
 		
 	    
 
