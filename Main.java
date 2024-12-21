@@ -1026,6 +1026,26 @@ public class Main extends Application{
             mnl_config.setLayoutX(400);
             mnl_config.setLayoutY(348);
             _CONFIG_ROOT_.getChildren().add(mnl_config);
+	    mnl_config.setOnAction(command -> {
+               //Anchor pane
+               AnchorPane _MNL_CONFIG_ROOT_ = new AnchorPane();
+               _MNL_CONFIG_ROOT_.setStyle("-fx-background-color:WHITE;");
+
+               //New Stage
+               Stage mnl_stg = new Stage();
+
+               //New scene with the root
+                Scene mnl_scene = new Scene(_MNL_CONFIG_ROOT_,500,400);
+
+                //Set the window
+                mnl_stg.setTitle("Configure appearance manual");
+                mnl_stg.setResizable(false);
+                mnl_stg.setScene(mnl_scene);
+
+                //show window
+                mnl_stg.show();
+
+            });
 
 		
 	    
