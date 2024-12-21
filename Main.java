@@ -1037,6 +1037,40 @@ public class Main extends Application{
                //New scene with the root
                 Scene mnl_scene = new Scene(_MNL_CONFIG_ROOT_,500,400);
 
+	         //Spacer
+                Separator sp00 = new Separator();
+                sp00.setPrefSize(500,5);
+                sp00.setLayoutX(0);
+                sp00.setLayoutY(25);
+                _MNL_CONFIG_ROOT_.getChildren().add(sp00);
+                
+                //Font label
+                Label mnl_font = new Label("foreground");
+                mnl_font.setFont((Font)appear_logo.getFont());
+                mnl_font.setLayoutX(20);
+                mnl_font.setLayoutY(50);
+                _MNL_CONFIG_ROOT_.getChildren().add(mnl_font);
+                
+                //Font color picker
+                ColorPicker pick = new ColorPicker();
+                pick.setPrefSize(90, 21);
+                pick.setLayoutX(120);
+                pick.setLayoutY(53);
+                //get the style string of the text box
+            	String text_box_style = textBox.getStyle();   	
+            	//Get the foreground of the text box
+            	Color txt_fore = get_clr_txt(text_box_style);           	
+            	//Set it default value to the color picker
+            	pick.setValue(txt_fore);
+                _MNL_CONFIG_ROOT_.getChildren().add(pick);
+                pick.setOnAction(cmd -> {
+                	//Get the selected color
+                	Color clr = pick.getValue();
+                	
+                	//set it to be foreground of the text box font
+                	textBox.setStyle("-fx-text-fill:" + string_to_hex(clr) + ";");
+                });
+
                 //Set the window
                 mnl_stg.setTitle("Configure appearance manual");
                 mnl_stg.setResizable(false);
