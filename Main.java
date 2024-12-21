@@ -1071,6 +1071,21 @@ public class Main extends Application{
                 	textBox.setStyle("-fx-text-fill:" + string_to_hex(clr) + ";");
                 });
 
+		//reset foreground button
+                Button rst_fore = new Button("reset");
+                rst_fore.setPrefSize(60, 17);
+                rst_fore.setLayoutX(410);
+                rst_fore.setLayoutY(51);
+                _MNL_CONFIG_ROOT_.getChildren().add(rst_fore);
+                rst_fore.setOnAction(cmd -> pick.setValue(Color.BLACK));
+
+                //Spacer
+                Separator sp01 = new Separator();
+                sp01.setPrefSize(500, 5);
+                sp01.setLayoutX(0);
+                sp01.setLayoutY(90);
+                _MNL_CONFIG_ROOT_.getChildren().add(sp01);
+
                 //Set the window
                 mnl_stg.setTitle("Configure appearance manual");
                 mnl_stg.setResizable(false);
