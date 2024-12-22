@@ -1045,7 +1045,7 @@ public class Main extends Application{
                 _MNL_CONFIG_ROOT_.getChildren().add(sp00);
                 
                 //Font label
-                Label mnl_font = new Label("foreground");
+                Label mnl_font = new Label("editor foreground");
                 mnl_font.setFont((Font)appear_logo.getFont());
                 mnl_font.setLayoutX(20);
                 mnl_font.setLayoutY(50);
@@ -1054,7 +1054,7 @@ public class Main extends Application{
                 //Font color picker
                 ColorPicker pick = new ColorPicker();
                 pick.setPrefSize(90, 21);
-                pick.setLayoutX(120);
+                pick.setLayoutX(175);
                 pick.setLayoutY(53);
                 //get the style string of the text box
             	String text_box_style = textBox.getStyle();   	
@@ -1085,6 +1085,14 @@ public class Main extends Application{
                 sp01.setLayoutX(0);
                 sp01.setLayoutY(90);
                 _MNL_CONFIG_ROOT_.getChildren().add(sp01);
+
+	        //Label
+                Label mnl_txt_box_back = new Label("editor background");
+                mnl_txt_box_back.setFont((Font)appear_logo.getFont());
+                mnl_txt_box_back.setStyle("-fx-text-fill:rgb(60,60,60);");
+                mnl_txt_box_back.setLayoutX(20);
+                mnl_txt_box_back.setLayoutY(120);
+                _MNL_CONFIG_ROOT_.getChildren().add(mnl_txt_box_back);
 
                 //Set the window
                 mnl_stg.setTitle("Configure appearance manual");
