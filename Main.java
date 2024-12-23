@@ -1094,6 +1094,37 @@ public class Main extends Application{
                 mnl_txt_box_back.setLayoutY(120);
                 _MNL_CONFIG_ROOT_.getChildren().add(mnl_txt_box_back);
 
+		 //Application background color chooser
+                ColorPicker app_back = new ColorPicker();
+                app_back.setPrefSize(90,21);
+                app_back.setLayoutX(175);
+                app_back.setLayoutY(121);
+                //set the application background color as default
+                //color of the application background color picker
+                String app_back_style = _root_.getStyle();
+                Color app_back_clr = get_clr_from_style(app_back_style);
+                app_back.setValue(app_back_clr);
+                _MNL_CONFIG_ROOT_.getChildren().add(app_back);
+
+
+                //Reset button
+                Button rst_app_back = new Button("reset");
+                rst_app_back.setFont((Font)rst_fore.getFont());
+                rst_app_back.setPrefSize(60,17);
+                rst_app_back.setLayoutX(410);
+                rst_app_back.setLayoutY(120);
+                _MNL_CONFIG_ROOT_.getChildren().add(rst_app_back);
+                rst_app_back.setOnAction(cmd -> _root_.setStyle("-fx-background-color:WHITE;"));
+
+
+                //Menu bar color label
+                Label menu_clr = new Label("menu background");
+                menu_clr.setFont((Font)mnl_txt_box_back.getFont());
+                menu_clr.setLayoutX(20);
+                menu_clr.setLayoutY(190);
+                _MNL_CONFIG_ROOT_.getChildren().add(menu_clr);
+
+
                 //Set the window
                 mnl_stg.setTitle("Configure appearance manual");
                 mnl_stg.setResizable(false);
