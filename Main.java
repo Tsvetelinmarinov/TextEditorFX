@@ -261,6 +261,7 @@ public class Main extends Application{
          * File menu
          */
         fileMenu = new Menu("File");
+        fileMenu.setStyle("-fx-font-size:14;");
         menuBar.getMenus().add(fileMenu);
 
 
@@ -268,6 +269,7 @@ public class Main extends Application{
          * Edit menu
          */
         editMenu = new Menu("Edit");
+        editMenu.setStyle("-fx-font-size:14;");
         menuBar.getMenus().add(editMenu);
 
 
@@ -275,6 +277,7 @@ public class Main extends Application{
          * Options menu
          */
         optionsMenu = new Menu("Options");
+        optionsMenu.setStyle("-fx-font-size:14;");
         menuBar.getMenus().add(optionsMenu);
 
 
@@ -282,6 +285,7 @@ public class Main extends Application{
          * Help menu
          */
         helpMenu = new Menu("Help");
+        helpMenu.setStyle("-fx-font-size:14;");
         menuBar.getMenus().add(helpMenu);
 
 
@@ -1082,7 +1086,7 @@ public class Main extends Application{
                 //set the application background color as default
                 //color of the application background color picker
                 String app_back_style = _root_.getStyle();
-                Color app_back_clr = get_clr_from_style(app_back_style);
+                Color app_back_clr = get_back_clr_from_style(app_back_style);
                 app_back.setValue(app_back_clr);
                 _MNL_CONFIG_ROOT_.getChildren().add(app_back);
                 app_back.setOnAction(cmd -> {
@@ -1125,7 +1129,7 @@ public class Main extends Application{
                 menu_bar_clr.setPrefSize(90, 25);
                 menu_bar_clr.setLayoutX(205);
                 menu_bar_clr.setLayoutY(190);
-                Color menu_bar_back = get_clr_from_style(menuBar.getStyle());
+                Color menu_bar_back = get_back_clr_from_style(menuBar.getStyle());
                 menu_bar_clr.setValue(menu_bar_back);
                 menu_bar_clr.setOnAction(cmd -> {
                     //get selected color from the color picker
@@ -1151,6 +1155,24 @@ public class Main extends Application{
 
 
 
+                //Spacer
+                Separator sp04 = new Separator();
+                sp04.setPrefSize(400,5);
+                sp04.setLayoutX(50);
+                sp04.setLayoutY(230);
+                _MNL_CONFIG_ROOT_.getChildren().add(sp04);
+
+
+                //Spacer
+                Separator sp05 = new Separator();
+                sp05.setPrefSize(500,5);
+                sp05.setLayoutX(0);
+                sp05.setLayoutY(256);
+                _MNL_CONFIG_ROOT_.getChildren().add(sp05);
+                
+
+                
+
                 //Set the window
                 mnl_stg.setTitle("Configure appearance manual");
                 mnl_stg.setResizable(false);
@@ -1175,6 +1197,33 @@ public class Main extends Application{
         }
 
 
+
+         /**
+         * Show information window
+         */
+        private void show_info_win(){
+
+            //New stage
+            Stage info_stg = new Stage();
+
+            //Anchor pane
+            AnchorPane _INFO_ROOT_ = new AnchorPane();
+
+            //New scene with the root component
+            Scene arg01 = new Scene(_INFO_ROOT_,400,500);
+
+
+            //set the window
+            info_stg.setTitle("Information");
+            info_stg.setResizable(false);
+            info_stg.setScene(arg01);
+
+            //show the window
+            info_stg.show();
+
+        }
+
+        
 
 
     }
@@ -1202,6 +1251,36 @@ public class Main extends Application{
 
 
 
+     /**
+     * Get the background color of any component
+     */
+    private Color get_back_clr_from_style(String style_property){
+
+        //Extract the color params from the style property
+        String clr_str = extract_background_from_css_prop(style_property);
+
+        //Convert the text to a color
+        return Color.web(clr_str);
+
+    }
+
+
+
+    /**
+     * Get the border color of any component
+     */
+    private Color get_border_clr_from_style(String style_property){
+
+        //Extract the color params from the style property
+        String clr_str = extract_border_from_css_prop(style_property);
+
+        //Convert the text to a color
+        return Color.web(clr_str);
+
+    }
+
+
+
 
     /**
      * Trim color parameters from java fx css property
@@ -1216,6 +1295,55 @@ public class Main extends Application{
         //Loop over properties and cut the unuseful parth if the css property
         for(String prop : props){
             if(prop.trim().startsWith("-fx-text-fill:")){
+                clr_str = prop.split(":")[1].trim();
+                break;
+            }
+        }
+
+        return clr_str;
+
+    }
+
+
+
+
+    /**
+     * Trim background color parameters from java fx css property
+     */
+    private String extract_background_from_css_prop(String arg01){
+
+        //Default color string if the other from the css property is missing
+        String clr_str = "#000000";
+
+        String[] props = arg01.split(";");
+
+        //Loop over properties and cut the unuseful parth if the css property
+        for(String prop : props){
+            if(prop.trim().startsWith("-fx-background-color:")){
+                clr_str = prop.split(":")[1].trim();
+                break;
+            }
+        }
+
+        return clr_str;
+
+    }
+
+
+
+    /**
+     * Trim border color parameters from java fx css property
+     */
+    private String extract_border_from_css_prop(String arg01){
+
+        //Default color string if the other from the css property is missing
+        String clr_str = "#000000";
+
+        String[] props = arg01.split(";");
+
+        //Loop over properties and cut the unuseful parth if the css property
+        for(String prop : props){
+            if(prop.trim().startsWith("-fx-border-color:")){
                 clr_str = prop.split(":")[1].trim();
                 break;
             }
