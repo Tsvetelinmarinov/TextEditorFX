@@ -1213,6 +1213,19 @@ public class Main extends Application{
             Scene arg01 = new Scene(_INFO_ROOT_,400,500);
 
 
+             //Text area
+            TextArea info_box = new TextArea();    
+            info_box.setFont(Font.font("Arial",FontWeight.NORMAL,FontPosture.REGULAR,14));
+            info_box.setStyle("-fx-text-fill:rgb(160,160,160);");
+            info_box.setEditable(false);
+            Color editor_back = get_clr_from_style(info_box.getStyle());
+            info_box.setStyle("-fx-caret-color:" + clr_to_hex(editor_back) + ";");
+            info_box.setPrefSize(402,450);
+            info_box.setLayoutX(-1);
+            info_box.setLayoutY(51);
+            _INFO_ROOT_.getChildren().add(info_box);
+
+
             //set the window
             info_stg.setTitle("Information");
             info_stg.setResizable(false);
