@@ -1213,17 +1213,21 @@ public class Main extends Application{
             Scene arg01 = new Scene(_INFO_ROOT_,400,500);
 
 
-             //Text area
-            TextArea info_box = new TextArea();    
-            info_box.setFont(Font.font("Arial",FontWeight.NORMAL,FontPosture.REGULAR,14));
-            info_box.setStyle("-fx-text-fill:rgb(160,160,160);");
-            info_box.setEditable(false);
-            Color editor_back = get_clr_from_style(info_box.getStyle());
-            info_box.setStyle("-fx-caret-color:" + clr_to_hex(editor_back) + ";");
-            info_box.setPrefSize(402,450);
-            info_box.setLayoutX(-1);
-            info_box.setLayoutY(51);
-            _INFO_ROOT_.getChildren().add(info_box);
+              //Text box for the information
+            TextArea info = new TextArea();
+            info.setFont(new Font("System",14));
+            info.setStyle("-fx-background-color:" + get_back_clr_from_style(_INFO_ROOT_.getStyle()) + ";");
+            info.setEditable(false);
+            info.setStyle("-fx-caret-color:" + get_back_clr_from_style(_INFO_ROOT_.getStyle()) + ";");
+            info.setPrefSize(_INFO_ROOT_.getWidth() + 2,_INFO_ROOT_.getHeight() - 50);
+            info.setLayoutX(-1);
+            info.setLayoutY(51);
+            info.setText(
+              "\n > Application version\n" +
+              "    1.0.0\n\n > Description\n    Text editor for every day use\n\n > Programmer\n    Tsvetelin Marinov" +
+              "\n\n > License\n    Free to use\n\n > Place\n    Sofia, Bulgaria, EU\n\n > Date\n    05/01/2025"
+            );
+            _INFO_ROOT_.getChildren().add(info);
 
 
             //set the window
