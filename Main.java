@@ -1216,9 +1216,10 @@ public class Main extends Application{
               //Text box for the information
             TextArea info = new TextArea();
             info.setFont(new Font("System",14));
-            info.setStyle("-fx-background-color:" + get_back_clr_from_style(_INFO_ROOT_.getStyle()) + ";");
+            Color back = get_back_clr_from_style(info.getStyle());
+            info.setStyle("-fx-background-color:" + clr_to_hex(back) + ";");
+            info.setStyle("-fx-caret-color:" + clr_to_hex(back) + ";");
             info.setEditable(false);
-            info.setStyle("-fx-caret-color:" + get_back_clr_from_style(_INFO_ROOT_.getStyle()) + ";");
             info.setPrefSize(_INFO_ROOT_.getWidth() + 2,_INFO_ROOT_.getHeight() - 50);
             info.setLayoutX(-1);
             info.setLayoutY(51);
