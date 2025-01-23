@@ -478,9 +478,27 @@ public class Main extends Application{
             FileNameExtensionFilter docx = new FileNameExtensionFilter("document", "docx");
             FileNameExtensionFilter java = new FileNameExtensionFilter("java file", "java");
             FileNameExtensionFilter html = new FileNameExtensionFilter("html document", "html");
+            FileNameExtensionFilter cs = new FileNameExtensionFilter("C# file", "cs");
+            FileNameExtensionFilter cpp = new FileNameExtensionFilter("C++ file", "cpp");
+            FileNameExtensionFilter header = new FileNameExtensionFilter("C++ header file", "h");
+            FileNameExtensionFilter css = new FileNameExtensionFilter("style sheet", "css");
+            FileNameExtensionFilter js = new FileNameExtensionFilter("java script file", "js");
+            FileNameExtensionFilter xml = new FileNameExtensionFilter("xml configuration", "xml");
+            FileNameExtensionFilter fxml = new FileNameExtensionFilter("fxml document", "fxml");
+
 
             //apply filters
             chooser.setFileFilter(txt);
+            chooser.setFileFilter(docx);
+            chooser.setFileFilter(java);
+            chooser.setFileFilter(html);
+            chooser.setFileFilter(cs);
+            chooser.setFileFilter(cpp);
+            chooser.setFileFilter(header);
+            chooser.setFileFilter(css);
+            chooser.setFileFilter(js);
+            chooser.setFileFilter(xml);
+            chooser.setFileFilter(fxml);
 
 
 
