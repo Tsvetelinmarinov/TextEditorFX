@@ -65,6 +65,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         ProgramLogicalClass systemLogic = new ProgramLogicalClass();
+        EditorOptions editOptions = new EditorOptions();
 
         root.setStyle("-fx-background-color:WHITE;");
 
@@ -149,15 +150,19 @@ public class Main extends Application {
 
         selectAll.setStyle("-fx-font-size: 16;");
         editMenu.getItems().add(selectAll);
+        selectAll.setOnAction(event -> editOptions.selectAllTheText(textBox));
 
         copy.setStyle("-fx-font-size: 16;");
         editMenu.getItems().add(copy);
+        copy.setOnAction(event -> editOptions.copySelectedText(textBox));
 
         paste.setStyle("-fx-font-size: 16;");
         editMenu.getItems().add(paste);
+        paste.setOnAction(event -> editOptions.pasteCopiedText(textBox));
 
         deleteAll.setStyle("-fx-font-size: 16;");
         editMenu.getItems().add(deleteAll);
+        deleteAll.setOnAction(event -> editOptions.deleteContent(textBox));
 
         appearance.setStyle("-fx-font-size: 16;");
         optionsMenu.getItems().add(appearance);
