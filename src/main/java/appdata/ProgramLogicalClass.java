@@ -4,13 +4,16 @@
 
 package appdata;
 
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 import javax.swing.*;
-import java.io.File;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.OptionPaneUI;
 
 /**
  *
@@ -36,7 +39,7 @@ public class ProgramLogicalClass {
 
 
     //Отвори файл от сисметама
-    public void openLocalFile(TextArea textArea) throws FileNotFoundException {
+    public void openLocalFile(TextArea textArea) throws Exception {
         FileChooser fileChooser = new FileChooser();
         File document;
         Scanner scanner;
@@ -47,9 +50,50 @@ public class ProgramLogicalClass {
             scanner = new Scanner(document);
 
             while (scanner.hasNextLine()) {
-                String content = scanner.nextLine() + "\n";
-                textArea.appendText(content);
+                String fileContent = scanner.nextLine() + "\n";
+                textArea.appendText(fileContent);
             }
+        }
+        else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Invalid file!",
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        }
+
+    }
+
+
+
+    //Запамети файл на компютъра
+    public void exportDataToLocalFile(TextArea textArea) throws Exception {
+        JFileChooser fileChooser = new JFileChooser();
+        File file;
+        PrintWriter outputStream;
+
+        FileNameExtensionFilter txt = new FileNameExtensionFilter("text file", "txt");
+
+        fileChooser.setFileFilter(txt);
+
+        int fileChooserResponse = fileChooser.showSaveDialog(null);
+
+        boolean pathIsSelected = fileChooserResponse == JFileChooser.APPROVE_OPTION;
+
+        if (pathIsSelected) {
+            file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            outputStream = new PrintWriter(file);
+            outputStream.println(textArea.getText());
+            outputStream.close();
+        }
+        else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Path is not selected!",
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE
+            );
         }
     }
 

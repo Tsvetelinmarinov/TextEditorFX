@@ -66,7 +66,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ProgramLogicalClass Functions = new ProgramLogicalClass();
+        ProgramLogicalClass systemLogic = new ProgramLogicalClass();
 
         root.setStyle("-fx-background-color:WHITE;");
 
@@ -115,20 +115,27 @@ public class Main extends Application {
 
         newFile.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(newFile);
-        newFile.setOnAction(actionEvent -> Functions.createNewFile(textBox));
+        newFile.setOnAction(event -> systemLogic.createNewFile(textBox));
 
         load.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(load);
-        load.setOnAction(actionEvent -> {
+        load.setOnAction(event -> {
             try {
-                Functions.openLocalFile(textBox);
-            } catch (FileNotFoundException e) {
+                systemLogic.openLocalFile(textBox);
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
 
         export.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(export);
+        export.setOnAction(event -> {
+            try {
+                systemLogic.exportDataToLocalFile(textBox);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         newWindow.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(newWindow);
