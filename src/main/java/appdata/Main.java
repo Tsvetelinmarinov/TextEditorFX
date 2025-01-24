@@ -17,7 +17,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
+
 
 /**
 *
@@ -25,27 +25,27 @@ import java.io.FileNotFoundException;
 public class Main extends Application {
 
     //System components
-    private Stage mainStage;
+    private final Stage mainStage = new Stage();
     private Scene mainScene;
-    private AnchorPane root = new AnchorPane();
-    private MenuBar menuBar = new MenuBar();
-    private Menu fileMenu = new Menu("File");
-    private Menu optionsMenu = new Menu("Options");
-    private Menu editMenu = new Menu("Edit");;
-    private Menu helpMenu = new Menu("Help");;
-    private MenuItem load = new Menu("open file");;
-    private MenuItem export = new Menu("save as");;
-    private MenuItem newFile = new MenuItem("new file");
-    private MenuItem newWindow = new MenuItem("new window");
-    private MenuItem reboot = new MenuItem("restart");
-    private MenuItem close = new MenuItem("close");
-    private MenuItem selectAll = new MenuItem("select all");
-    private MenuItem copy = new MenuItem("copy");
-    private MenuItem paste = new MenuItem("paste");
-    private MenuItem deleteAll = new MenuItem("delete all");
-    private MenuItem appearance = new MenuItem("appearance");
-    private MenuItem info = new MenuItem("information");
-    private TextArea textBox = new TextArea();
+    private final AnchorPane root = new AnchorPane();
+    private final MenuBar menuBar = new MenuBar();
+    private final Menu fileMenu = new Menu("File");
+    private final Menu optionsMenu = new Menu("Options");
+    private final Menu editMenu = new Menu("Edit");
+    private final Menu helpMenu = new Menu("Help");
+    private final MenuItem load = new Menu("open file");
+    private final MenuItem export = new Menu("save as");
+    private final MenuItem newFile = new MenuItem("new file");
+    private final MenuItem newWindow = new MenuItem("new window");
+    private final MenuItem reboot = new MenuItem("restart");
+    private final MenuItem close = new MenuItem("close");
+    private final MenuItem selectAll = new MenuItem("select all");
+    private final MenuItem copy = new MenuItem("copy");
+    private final MenuItem paste = new MenuItem("paste");
+    private final MenuItem deleteAll = new MenuItem("delete all");
+    private final MenuItem appearance = new MenuItem("appearance");
+    private final MenuItem info = new MenuItem("information");
+    private final TextArea textBox = new TextArea();
 
 
 
@@ -60,22 +60,20 @@ public class Main extends Application {
 
 
     /**
-     * @param stage
-     * @throws Exception
+     *
      */
     @Override
-    public void start(Stage stage) throws Exception {
-
+    public void start(Stage stage) {
         ProgramLogicalClass systemLogic = new ProgramLogicalClass();
 
         root.setStyle("-fx-background-color:WHITE;");
 
         mainScene = new Scene(root, 1000, 800);
 
-        stage.setScene(mainScene);
-        stage.setTitle("TextEditor++");
-        stage.setResizable(false);
-        stage.show();
+        mainStage.setScene(mainScene);
+        mainStage.setTitle("TextEditor++");
+        mainStage.setResizable(false);
+        mainStage.show();
 
 
 
@@ -139,12 +137,15 @@ public class Main extends Application {
 
         newWindow.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(newWindow);
+        newWindow.setOnAction(event -> systemLogic.createNewWindow(mainScene));
 
         reboot.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(reboot);
+        reboot.setOnAction(event -> systemLogic.rebootApplication(mainStage, textBox));
 
         close.setStyle("-fx-font-size: 16;");
         fileMenu.getItems().add(close);
+        close.setOnAction(event -> systemLogic.terminateApplication(textBox));
 
         selectAll.setStyle("-fx-font-size: 16;");
         editMenu.getItems().add(selectAll);

@@ -4,16 +4,15 @@
 
 package appdata;
 
-import javafx.scene.control.DialogPane;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-
+import javafx.stage.Stage;
 import java.io.*;
 import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.plaf.OptionPaneUI;
+
 
 /**
  *
@@ -97,5 +96,54 @@ public class ProgramLogicalClass {
         }
     }
 
+
+
+    //Отвори нов прозорец
+    public void createNewWindow(Scene scene) {
+        Stage stage = new Stage();
+        stage.setTitle("TextEditor++");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+
+
+    //Рестарт
+    public void rebootApplication(Stage stage, TextArea textArea) {
+        boolean hasContent = !textArea.getText().isEmpty();
+
+        if (hasContent) {
+            JOptionPane.showInternalMessageDialog(
+                    null,
+                    "Unsaved data will be lost!",
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            textArea.setText("");
+        }
+
+        stage.close();
+        stage.show();
+    }
+
+
+
+    //Изход от програмата
+    public void terminateApplication(TextArea textArea) {
+        boolean hasText = !textArea.getText().isEmpty();
+
+        if (hasText) {
+            JOptionPane.showInternalMessageDialog(
+                    null,
+                    "Unsaved data will be lost!",
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        }
+
+        System.exit(0);
+    }
 
 }
