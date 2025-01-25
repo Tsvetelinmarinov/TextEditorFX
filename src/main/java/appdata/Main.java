@@ -166,6 +166,7 @@ public class Main extends Application {
 
         appearance.setStyle("-fx-font-size: 16;");
         optionsMenu.getItems().add(appearance);
+        appearance.setOnAction(event -> new Settings());
 
         info.setStyle("-fx-font-size: 16;");
         helpMenu.getItems().add(info);
